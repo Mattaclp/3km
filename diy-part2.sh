@@ -33,3 +33,7 @@ sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #rm -rf feeds/packages/devel/gn/src/out/last_commit_position.h
 #wget https://github.com/Mattaclp/NewLEDE/raw/refs/heads/main/gn/src/out/last_commit_position.h
 #mv last_commit_position.h feeds/packages/devel/gn/src/out/last_commit_position.h
+rm -rf feeds/luci/applications/luci-app-openclash
+git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
+mv package/OpenClash/luci-app-openclash feeds/luci/applications/
+rm -rf package/OpenClash
