@@ -34,6 +34,22 @@ sed -i 's/192.168.6.1/192.168.10.1/g' package/base-files/files/bin/config_genera
 #wget https://github.com/Mattaclp/NewLEDE/raw/refs/heads/main/gn/src/out/last_commit_position.h
 #mv last_commit_position.h feeds/packages/devel/gn/src/out/last_commit_position.h
 rm -rf feeds/luci/applications/luci-app-openclash
-git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
-mv package/OpenClash/luci-app-openclash feeds/luci/applications/
-rm -rf package/OpenClash
+
+function git_sparse_clone() {
+  branch="$1" repourl="$2" && shift 2
+  git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
+  repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
+  cd $repodir && git sparse-checkout set $@
+  mv -f $@ ../
+  cd .. && rm -rf $repodir
+}
+
+git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
+
+cp -rf luci-app-openclash package
+
+cp -r package/luci-app-openclash bin/packages
+
+#git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
+#mv package/OpenClash/luci-app-openclash feeds/luci/applications/
+#rm -rf package/OpenClash
