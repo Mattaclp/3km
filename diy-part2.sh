@@ -45,9 +45,10 @@ function git_sparse_clone() {
 }
 
 git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
-
 cp -rf luci-app-openclash package
 
+mkdir bin
+mkdir bin/packages
 cp -r package/luci-app-openclash bin/packages/
 
 #git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
