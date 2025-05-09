@@ -48,7 +48,7 @@ git_sparse_clone dev https://github.com/vernesong/OpenClash luci-app-openclash
 
 cp -rf luci-app-openclash package
 
-cp -r package/luci-app-openclash bin/packages
+cp -r package/luci-app-openclash bin/packages/
 
 #git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
 #mv package/OpenClash/luci-app-openclash feeds/luci/applications/
