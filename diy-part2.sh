@@ -51,7 +51,7 @@ mkdir bin
 mkdir bin/packages
 cp -r package/luci-app-openclash bin/packages/
 zip -r luci-app-openclash.zip bin/packages/luci-app-openclash
-cp -r luci-app-openclash.zip luci-app-openclash.zip
+cp -r luci-app-openclash.zip bin/packages/luci-app-openclash.zip
 
 #git clone -b dev https://github.com/vernesong/OpenClash.git package/OpenClash
 #mv package/OpenClash/luci-app-openclash feeds/luci/applications/
